@@ -1,43 +1,30 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import Form from '../../components/common/Form';
+import {LoginFormControls} from "../../config/inputConfig"
+import { AuthContext } from '../../context/Auth';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
-
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const navigate = useNavigate()
+    const {loginFormData, setLoginFormData, firebaseLogin} = useContext(AuthContext)!
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        // Handle sign-in logic here
-        console.log('Email:', email);
-        console.log('Password:', password);
+        firebaseLogin().then((result) => {
+            if(result)
+                navigate('/')
+        })
     };
+
     return (
-        <div className="signin-container">
-            <h2>Sign In</h2>
-            <form onSubmit={handleSubmit} className="signin-form">
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit" className="signin-button">Sign In</button>
-            </form>
-        </div>
+        <Form
+            formData={loginFormData}
+            setFormData={setLoginFormData}
+            formControls={LoginFormControls}
+            buttonText="Sign In"
+            title='Sign In'
+            handleSubmit={handleSubmit}
+        />
     )
 }
 
