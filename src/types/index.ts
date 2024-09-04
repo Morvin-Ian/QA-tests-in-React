@@ -35,12 +35,17 @@ export interface FormProps<T> {
 export interface LoginFormData {
     email: string;
     password: string;
-  }
+}
 
 export  interface RegisterFormData {
     name: string;
     email: string;
     password: string;
+}
+
+export interface PostFormData {
+    title: string;
+    description: string;
 }
 
 export interface AuthContextType {

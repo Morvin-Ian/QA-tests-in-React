@@ -43,3 +43,22 @@ export const registerFormControls = [
         componentType:"input"       
     }
 ]
+
+export const postFormControls = [
+    {
+        type:"text",
+        name: "title",
+        id: "title",
+        placeholder:"Enter title",
+        label:"Title",
+        componentType:"input"       
+    },
+    {
+        type:"text",
+        name: "description",
+        id: "description",
+        placeholder:"Enter Description",
+        label:"Description",
+        componentType:"input"       
+    }
+]

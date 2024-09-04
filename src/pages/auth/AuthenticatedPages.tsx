@@ -1,4 +1,4 @@
-import  { useContext } from 'react'
+import { useContext } from 'react'
 import { AuthStateProps } from '../../types'
 import { AuthContext } from '../../context/Auth'
 import { Navigate } from 'react-router-dom'
@@ -8,7 +8,7 @@ const AuthenticatedPages = ({ children }: AuthStateProps) => {
     if (user) return children;
 
     return (
-        <Navigate to={'sign-in'} />
+        <Navigate to={'/sign-in'} />
     )
 }
 
